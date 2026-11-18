@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>设置 — YouTube 双语字幕翻译</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <h1>YouTube 双语字幕翻译</h1>
+    <p class="sub">原文字幕在上、译文在下，支持免费翻译及 DeepSeek / OpenAI / 任意 OpenAI 兼容引擎。</p>
+
+    <section>
+      <h2>基础</h2>
+      <div class="field">
+        <label for="enabled">启用双语字幕</label>
+        <label class="switch"><input type="checkbox" id="enabled"><span class="slider"></span></label>
+      </div>
+      <div class="field">
+        <label for="mode">显示模式</label>
+        <select id="mode">
+          <option value="legacy">经典模式（底部双语字幕）</option>
+          <option value="learning">学习模式（逐句 + 控制条）</option>
+          <option value="off">关闭</option>
+        </select>
+      </div>
+    </section>
+
+    <section>
+      <h2>翻译引擎</h2>
+      <div class="field">
+        <label for="provider">引擎</label>
+        <select id="provider">
+          <option value="deepseek">DeepSeek</option>
+          <option value="openai">OpenAI</option>
+          <option value="google">Google 翻译（免费，无需 Key）</option>
+          <option value="custom">自定义 (OpenAI 兼容)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="apiKey">API Key</label>
+        <input type="password" id="apiKey" placeholder="sk-...">
+      </div>
+      <div class="field">
+        <label for="baseUrl">API Base URL</label>
+        <input type="text" id="baseUrl" placeholder="https://api.deepseek.com/v1">
+      </div>
+      <div class="field">
+        <label for="model">模型名称</label>
+        <input type="text" id="model" placeholder="deepseek-chat">
+      </div>
+      <div class="field">
+        <label for="targetLang">目标语言</label>
+        <select id="targetLang"></select>
+      </div>
+      <div class="field">
+        <button id="test">测试翻译</button>
+        <span class="test-result" id="testResult"></span>
+      </div>
+    </section>
+
+    <section>
+      <h2>字幕显示</h2>
+      <div class="field">
+        <label for="showOriginal">显示原文字幕</label>
+        <label class="switch"><input type="checkbox" id="showOriginal"><span class="slider"></span></label>
+      </div>
+      <div class="field">
+        <label for="showTranslation">显示译文</label>
+        <label class="switch"><input type="checkbox" id="showTranslation"><span class="slider"></span></label>
+      </div>
+      <div class="field">
+        <label for="fontSize">字号 (px)</label>
+        <input type="range" id="fontSize" min="14" max="36" step="1">
+        <span id="fontSizeVal"></span>
+      </div>
+      <div class="field">
+        <label for="originalColor">原文颜色</label>
+        <input type="color" id="originalColor">
+      </div>
+      <div class="field">
+        <label for="translationColor">译文颜色</label>
+        <input type="color" id="translationColor">
+      </div>
+      <div class="field">
+        <label for="backgroundOpacity">背景不透明度</label>
+        <input type="range" id="backgroundOpacity" min="0" max="100" step="1">
+        <span id="backgroundOpacityVal"></span>
+      </div>
+      <div class="field">
+        <label for="bottomOffset">距底部偏移 (px)</label>
+        <input type="number" id="bottomOffset" min="0" max="200" step="1">
+      </div>
+    </section>
+
+    <div class="actions">
+      <button id="save" class="primary">保存设置</button>
+      <span class="saved" id="saved"></span>
+    </div>
+  </div>
+  <script src="common.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "youtube translate",
+  "version": "1.0.0",
+  "description": "YouTube 双语字幕翻译：原文字幕在上、译文在下，支持免费翻译及 DeepSeek / OpenAI / 任意 OpenAI 兼容引擎。",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://*/*", "http://*/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*",
+        "https://music.youtube.com/*"
+      ],
+      "js": ["common.js", "content.js"],
+      "css": ["overlay.css"],
+      "run_at": "document_start",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*",
+        "https://music.youtube.com/*"
+      ],
+      "js": ["page-bridge.js"],
+      "run_at": "document_start",
+      "all_frames": false,
+      "world": "MAIN"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "YouTube 双语字幕翻译",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_page": "options.html",
+  "web_accessible_resources": [
+    {
+      "resources": ["page-bridge.js"],
+      "matches": ["https://www.youtube.com/*", "https://m.youtube.com/*", "https://music.youtube.com/*"]
+    }
+  ],
+  "commands": {
+    "toggle-translation": {
+      "suggested_key": { "default": "Alt+Shift+T" },
+      "description": "开启 / 关闭双语字幕翻译"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

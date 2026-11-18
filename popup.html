@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>双语字幕翻译</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="row switch-row">
+      <span class="label">双语字幕翻译</span>
+      <label class="switch">
+        <input type="checkbox" id="toggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="status" id="status">正在读取设置…</div>
+
+    <div class="row">
+      <label class="label" for="provider">翻译引擎</label>
+      <select id="provider">
+        <option value="deepseek">DeepSeek</option>
+        <option value="openai">OpenAI</option>
+        <option value="google">Google 翻译（免费）</option>
+        <option value="custom">自定义 (OpenAI 兼容)</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label class="label" for="apiKey">API Key</label>
+      <input type="password" id="apiKey" placeholder="sk-...">
+    </div>
+
+    <div class="row">
+      <label class="label" for="targetLang">目标语言</label>
+      <select id="targetLang"></select>
+    </div>
+
+    <div class="row">
+      <label class="label" for="mode">显示模式</label>
+      <select id="mode">
+        <option value="legacy">经典模式（底部字幕）</option>
+        <option value="learning">学习模式（逐句）</option>
+        <option value="off">关闭</option>
+      </select>
+    </div>
+
+    <div class="btns">
+      <button id="save">保存</button>
+      <button id="openOptions" class="ghost">完整设置</button>
+    </div>
+  </div>
+  <script src="common.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

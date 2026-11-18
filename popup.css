@@ -1,0 +1,75 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  width: 300px;
+  font-family: Roboto, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  font-size: 13px;
+  color: #e8e8e8;
+  background: #1f1f1f;
+}
+
+.wrap { padding: 14px; }
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.switch-row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.label { font-size: 12px; color: #b8b8b8; }
+
+.switch { position: relative; display: inline-block; width: 42px; height: 22px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute; cursor: pointer; inset: 0;
+  background: #555; border-radius: 22px; transition: .2s;
+}
+.slider::before {
+  content: ""; position: absolute; height: 16px; width: 16px;
+  left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: .2s;
+}
+.switch input:checked + .slider { background: #2ba640; }
+.switch input:checked + .slider::before { transform: translateX(20px); }
+
+select, input[type="password"] {
+  width: 100%;
+  padding: 7px 8px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #2a2a2a;
+  color: #e8e8e8;
+  font-size: 13px;
+}
+select:focus, input:focus { outline: none; border-color: #2ba640; }
+
+.status {
+  min-height: 16px;
+  margin: 4px 0 10px;
+  font-size: 12px;
+  color: #ffb3b3;
+}
+
+.btns { display: flex; gap: 8px; }
+
+button {
+  flex: 1;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 6px;
+  background: #2ba640;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+button:hover { background: #35c150; }
+button.ghost { background: #3a3a3a; }
+button.ghost:hover { background: #4a4a4a; }

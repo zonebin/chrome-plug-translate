@@ -1,0 +1,1195 @@
+/* overlay.css — 经典模式双栏与沉浸学习模式 UI */
+
+/* ============ 沉浸全屏舞台（经典模式 & 学习模式共用） ============ */
+html.dsh-stage-active,
+html.dsh-stage-active body {
+  overflow: hidden !important;
+}
+html.dsh-stage-active #masthead-container,
+html.dsh-stage-active #below,
+html.dsh-stage-active #secondary,
+html.dsh-stage-active ytd-miniplayer,
+html.dsh-stage-active tp-yt-app-drawer {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+html.dsh-stage-active ytd-button-renderer:has(button),
+html.dsh-stage-active ytd-button-renderer:has(yt-button-shape) {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+html.dsh-stage-active {
+  --dsh-stage-width: 100vw;
+  --dsh-stage-height: 100vh;
+}
+html.dsh-legacy-mode #columns {
+  width: calc(var(--dsh-stage-width) * 0.75) !important;
+  max-width: calc(var(--dsh-stage-width) * 0.75) !important;
+  min-height: 0 !important;
+  height: var(--dsh-stage-height) !important;
+}
+html.dsh-stage-active #movie_player {
+  position: fixed !important;
+  top: 24px;
+  left: 24px;
+  width: calc(var(--dsh-stage-width) * 0.75 - 48px);
+  height: calc(var(--dsh-stage-height) * 0.70 - 48px);
+  z-index: 2147483642 !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  background: #000000 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45) !important;
+}
+html.dsh-legacy-mode #player-container {
+  view-transition-name: none !important;
+}
+.dsh-video-slot {
+  pointer-events: none;
+}
+html.dsh-stage-active #movie_player .html5-video-container {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+html.dsh-stage-active #movie_player video.html5-main-video {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+html.dsh-stage-active #movie_player .ytp-chrome-bottom,
+html.dsh-stage-active #movie_player .ytp-gradient-bottom,
+html.dsh-stage-active #movie_player .ytp-chrome-top,
+html.dsh-stage-active #movie_player .ytp-gradient-top,
+html.dsh-stage-active #movie_player .ytp-ce-element,
+html.dsh-stage-active #movie_player .ytp-watermark,
+html.dsh-stage-active #movie_player .ytp-overlays-container,
+html.dsh-stage-active #movie_player .ytp-player-content,
+html.dsh-stage-active #movie_player .ytp-pause-overlay,
+html.dsh-stage-active #movie_player .ytp-paid-content-overlay {
+  display: none !important;
+}
+#dsh-stage #dsh-translate-btn {
+  display: none !important;
+}
+#dsh-stage #dsh-translate-btn .dsh-translate-btn-inner {
+  width: 100%;
+  height: 100%;
+}
+
+#dsh-stage-mode-btn {
+  position: fixed;
+  right: 24px;
+  top: 24px;
+  z-index: 2147483646;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(20, 18, 26, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+#dsh-stage-mode-btn svg {
+  color: #b57cff;
+  fill: currentColor;
+}
+#dsh-stage-mode-btn:hover {
+  background: rgba(38, 34, 50, 0.92);
+  border-color: rgba(181, 124, 255, 0.55);
+}
+
+html.dsh-stage-active #movie_player .ytp-caption-window-container,
+html.dsh-stage-active #movie_player #ytp-caption-window-container,
+html.dsh-stage-active #movie_player .ytp-caption-window,
+html.dsh-stage-active #movie_player .caption-window,
+html.dsh-stage-active #movie_player thirdparty-caption-window,
+html.dsh-stage-active #movie_player #thirdparty-caption-window,
+html.dsh-stage-active #movie_player [id^="thirdparty-"],
+html.dsh-stage-active #movie_player [class^="thirdparty-"],
+html.dsh-stage-active #movie_player [class*=" thirdparty-"],
+html.dsh-stage-active #movie_player [id*="caption-window"],
+html.dsh-stage-active #movie_player [class*="caption-window"],
+.dsh-hide-native-cc .ytp-caption-window-container,
+.dsh-hide-native-cc #ytp-caption-window-container,
+.dsh-hide-native-cc .ytp-caption-window,
+.dsh-hide-native-cc .caption-window,
+.dsh-hide-native-cc thirdparty-caption-window,
+.dsh-hide-native-cc #thirdparty-caption-window,
+.dsh-hide-native-cc [id*="thirdparty-caption"],
+.dsh-hide-native-cc [class*="thirdparty-caption"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+html.dsh-stage-active #movie_player .ytp-miniplayer-button,
+html.dsh-stage-active #movie_player .ytp-miniplayer-upsell-control,
+html.dsh-stage-active #movie_player .ytp-tooltip,
+html.dsh-stage-active #movie_player .ytp-tooltip-text-wrapper,
+html.dsh-stage-active #movie_player .ytp-tooltip-overlay,
+html.dsh-stage-active #movie_player .ytp-chrome-top-buttons,
+html.dsh-stage-active #movie_player .ytp-title,
+html.dsh-stage-active #movie_player .ytp-title-link,
+html.dsh-stage-active #movie_player .ytp-watch-later-button,
+html.dsh-stage-active #movie_player .ytp-share-button {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+#movie_player .ytp-watch-later-button,
+#movie_player .ytp-share-button,
+#movie_player [data-testid="watch-later-button"],
+#movie_player [aria-label*="稍后"],
+#movie_player [aria-label*="收藏"],
+#movie_player [title*="稍后"],
+#movie_player [title*="收藏"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+#dsh-stage button svg,
+#dsh-translate-btn svg,
+.dsh-mode-menu svg {
+  pointer-events: none;
+}
+
+#dsh-stage {
+  position: fixed;
+  inset: 0;
+  width: var(--dsh-stage-width) !important;
+  height: var(--dsh-stage-height) !important;
+  z-index: 2147483640;
+  display: none;
+  font-family: inter, "Yuanti SC", YouYuan, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: rgba(255, 255, 255, 0.9);
+  box-sizing: border-box;
+}
+#dsh-stage * {
+  box-sizing: border-box;
+}
+
+/* ============ 1. 经典模式（双栏字幕模式） ============ */
+#dsh-stage.legacy {
+  display: flex;
+  flex-direction: row;
+  width: var(--dsh-stage-width) !important;
+  height: var(--dsh-stage-height) !important;
+  overflow: hidden !important;
+  background: #0f0f0f;
+}
+.dsh-legacy-main {
+  width: calc(var(--dsh-stage-width) * 0.75) !important;
+  height: var(--dsh-stage-height) !important;
+  flex: 0 0 calc(var(--dsh-stage-width) * 0.75) !important;
+  padding: 24px 24px 80px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.dsh-legacy-video-wrap {
+  width: 100%;
+  height: 70vh !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 70vh !important;
+}
+.dsh-legacy-video-wrap .dsh-video-slot {
+  width: 100%;
+  height: 100%;
+}
+.dsh-legacy-subarea {
+  width: 100%;
+  height: calc(30vh - 104px) !important;
+  min-height: 120px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 48px;
+  flex: 0 0 calc(30vh - 104px) !important;
+  overflow: hidden;
+}
+
+/* 右侧 25vw 上下文面板 */
+.dsh-legacy-aside {
+  width: calc(var(--dsh-stage-width) * 0.25) !important;
+  height: var(--dsh-stage-height) !important;
+  flex: 0 0 calc(var(--dsh-stage-width) * 0.25) !important;
+  background: #0f0f0f;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.dsh-btn-exit {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1a1a1a;
+  color: rgba(255, 255, 255, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  transition: all 0.18s ease;
+  padding: 0;
+}
+.dsh-btn-exit:hover {
+  color: #ffc862;
+  border-color: rgba(255, 200, 98, 0.45);
+}
+.dsh-btn-exit .dsh-exit-tip {
+  position: absolute;
+  right: 36px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+.dsh-btn-exit:hover .dsh-exit-tip {
+  opacity: 1;
+}
+
+#dsh-sub-overlay {
+  flex: 1 1 auto;
+  margin-top: 56px;
+  height: calc(var(--dsh-stage-height) - 90px);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+#dsh-sub-overlay .dsh-list,
+.dsh-learn-list {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 0 24px;
+  scroll-behavior: smooth;
+}
+#dsh-sub-overlay .dsh-list::-webkit-scrollbar,
+.dsh-learn-list::-webkit-scrollbar {
+  width: 8px;
+}
+#dsh-sub-overlay .dsh-list::-webkit-scrollbar-track,
+.dsh-learn-list::-webkit-scrollbar-track {
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-color: rgba(255, 255, 255, 0.04);
+  background-clip: padding-box;
+}
+#dsh-sub-overlay .dsh-list::-webkit-scrollbar-thumb,
+.dsh-learn-list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-color: rgba(255, 255, 255, 0.12);
+  background-clip: padding-box;
+}
+#dsh-sub-overlay .dsh-list::-webkit-scrollbar-thumb:hover {
+  background-color: #ffc862;
+}
+.dsh-learn-list::-webkit-scrollbar-thumb:hover {
+  background-color: #a47fff;
+}
+
+/* 经典模式右侧单条字幕（经典模式字幕条目） */
+#dsh-sub-overlay .dsh-item {
+  display: block;
+  margin: 18px 0 0;
+  padding: 0 16px;
+  cursor: pointer;
+}
+#dsh-sub-overlay .dsh-item:first-child {
+  margin-top: 0;
+}
+#dsh-sub-overlay .dsh-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  width: 100%;
+  min-width: 0;
+  font-size: var(--dsh-font-size, 22px);
+  font-weight: 500;
+}
+#dsh-sub-overlay .dsh-body {
+  flex: 1;
+  min-width: 0;
+}
+#dsh-sub-overlay .dsh-time {
+  flex-shrink: 0;
+  height: 1.45em;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+#dsh-sub-overlay .dsh-original {
+  display: inline-block;
+  text-align: left;
+  font-size: 0.8em;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+#dsh-sub-overlay .dsh-translation {
+  margin-top: 0.3em;
+  font-size: 0.72em;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+#dsh-sub-overlay .dsh-translation.pending {
+  color: rgba(255, 255, 255, 0.28);
+}
+#dsh-sub-overlay .dsh-item.played .dsh-original,
+#dsh-sub-overlay .dsh-item.played .dsh-translation {
+  color: rgba(255, 255, 255, 0.5);
+}
+#dsh-sub-overlay .dsh-item.active .dsh-original {
+  color: #ffc862;
+}
+#dsh-sub-overlay .dsh-item.active .dsh-time {
+  color: #ffc862;
+  font-weight: 500;
+}
+#dsh-sub-overlay .dsh-item.active .dsh-translation {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* 经典模式底部控制器（经典模式控制器） */
+.dsh-legacy-controller {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: calc(75vw - 1px);
+  height: 80px;
+  padding: 0 24px 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 2147483643;
+}
+.dsh-legacy-timeline {
+  position: absolute;
+  left: 0;
+  top: -5px;
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.dsh-legacy-track {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.18);
+  position: relative;
+  transition: height 0.12s ease;
+}
+.dsh-legacy-timeline:hover .dsh-legacy-track {
+  height: 4px;
+}
+.dsh-legacy-fill {
+  height: 100%;
+  width: 0%;
+  background: #ff2b2b;
+  position: relative;
+}
+.dsh-legacy-time-float {
+  position: absolute;
+  left: 12px;
+  top: -26px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+/* ============ 2. 学习模式（沉浸练习 风格） ============ */
+html.dsh-learning-mode,
+html.dsh-learning-mode body,
+html.dsh-learning-mode ytd-app {
+  background: #0f0f0f !important;
+}
+#dsh-stage.learning {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  pointer-events: none;
+}
+html.dsh-learning-mode #movie_player {
+  border-radius: 16px 16px 0 0 !important;
+  box-shadow: none !important;
+}
+.dsh-learn-content {
+  gap: 0;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+.dsh-learn-main {
+  width: 100%;
+  background: transparent;
+  border-color: transparent;
+}
+.dsh-learn-bg-aura,
+.dsh-learn-sidebar,
+.dsh-nav-icon-btn[title="收起/展开字幕栏"] {
+  display: none !important;
+}
+.dsh-stage-mode-btn,
+#dsh-stage-mode-btn,
+.dsh-learn-navbar,
+.dsh-learn-subarea,
+#dsh-learn-controller {
+  pointer-events: auto;
+}
+.dsh-learn-subarea,
+#dsh-learn-controller {
+  background: #0f0f0f;
+}
+.dsh-learn-navbar {
+  height: 70px;
+  padding: 0 16px;
+  background: #0f0f0f;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.dsh-learn-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.dsh-learn-back {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.dsh-learn-back:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.dsh-learn-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.dsh-learn-video-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 48vw;
+}
+.dsh-learn-channel {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
+}
+.dsh-learn-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dsh-nav-pill {
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.dsh-nav-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(164, 127, 255, 0.4);
+}
+.dsh-nav-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.72);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.dsh-nav-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.dsh-learn-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 16px;
+  padding: 0 16px 16px;
+}
+.dsh-learn-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.dsh-learn-bg-aura {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(72px) saturate(1.2);
+  opacity: 0.14;
+  pointer-events: none;
+  z-index: 0;
+}
+.dsh-learn-video-wrap {
+  flex: 1 1 auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+.dsh-learn-video-stage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  container-type: size;
+}
+.dsh-learn-video-stage .dsh-video-slot {
+  width: 100%;
+  height: 100%;
+}
+.dsh-learn-subarea {
+  flex: 0 0 clamp(140px, 22vh, 220px) !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+.dsh-caption-host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* 学习模式底部控制条（位于 practice-main 卡片内底部） */
+#dsh-learn-controller {
+  flex-shrink: 0;
+  padding: 0 24px 16px;
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.dsh-learn-progress {
+  width: 100%;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+.dsh-learn-progress-track {
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  position: relative;
+  overflow: visible;
+}
+.dsh-learn-progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #7c5cff 0%, #b57cff 100%);
+  position: relative;
+}
+.dsh-learn-progress-scrubber {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(181, 124, 255, 0.7);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.dsh-learn-progress:hover .dsh-learn-progress-scrubber {
+  opacity: 1;
+}
+.dsh-learn-ctl-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dsh-learn-ctl-left,
+.dsh-learn-ctl-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.dsh-learn-time {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  font-variant-numeric: tabular-nums;
+  margin-left: 4px;
+}
+.dsh-ab-pill {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.dsh-ab-pill.active {
+  border-color: #b57cff;
+  color: #b57cff;
+  background: rgba(181, 124, 255, 0.14);
+}
+
+/* 学习模式右侧栏 */
+.dsh-learn-sidebar {
+  width: 25vw;
+  min-width: 320px;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.dsh-learn-sidebar.collapsed {
+  display: none;
+}
+.dsh-learn-tabs {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 6px 4px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+.dsh-learn-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+  padding-bottom: 8px;
+  border-bottom: 2px solid #a47fff;
+}
+.dsh-learn-tab-count {
+  font-size: 11px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(164, 127, 255, 0.18);
+  color: #c4a8ff;
+}
+.dsh-learn-item {
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-bottom: 4px;
+}
+.dsh-learn-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.dsh-learn-item.active {
+  background: #221e2b;
+  padding: 10px 12px 14px;
+}
+.dsh-learn-item-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.dsh-learn-item-time {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 20px;
+  background: #1a1721;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.dsh-learn-item-copy {
+  opacity: 0;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: opacity 0.15s, color 0.15s;
+}
+.dsh-learn-item:hover .dsh-learn-item-copy,
+.dsh-learn-item.active .dsh-learn-item-copy {
+  opacity: 1;
+}
+.dsh-learn-item-copy:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+.dsh-learn-item .dsh-original {
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 6px;
+}
+.dsh-learn-item .dsh-translation {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.58);
+}
+.dsh-learn-item.active .dsh-original {
+  color: #a47fff;
+  font-weight: 600;
+}
+.dsh-learn-item.active .dsh-translation {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* ============ 3. 底部居中字幕（经典模式与学习模式共用容器） ============ */
+#dsh-bottom-captions {
+  width: 100%;
+  max-width: 960px;
+  text-align: center;
+  pointer-events: none;
+  display: none;
+  font-family: inter, "Yuanti SC", YouYuan, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+#dsh-bottom-captions .dsh-cap-box {
+  background: transparent;
+  padding: 0;
+}
+#dsh-bottom-captions.video-overlay {
+  position: absolute;
+  left: 50%;
+  right: auto;
+  bottom: clamp(16px, 4vh, 52px);
+  z-index: 2147483646;
+  width: min(92%, 1100px);
+  transform: translateX(-50%);
+  padding: 0 16px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95), 0 0 4px rgba(0, 0, 0, 0.85);
+}
+#dsh-bottom-captions.video-overlay .dsh-cap-box {
+  padding: 0;
+}
+#dsh-bottom-captions.video-overlay {
+  display: none !important;
+}
+.dsh-cap-original {
+  font-size: clamp(20px, 1.55vw, 28.6px);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.48;
+  white-space: pre-wrap;
+}
+.dsh-cap-translation {
+  margin-top: 8px;
+  font-size: clamp(18px, 1.38vw, 26px);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+.dsh-cap-translation.pending {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ============ 4. 通用控制器组件 & 速度面板 ============ */
+.dsh-ctl-left,
+.dsh-ctl-middle,
+.dsh-ctl-right {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+.dsh-ctl-middle {
+  justify-content: center;
+}
+.dsh-ctl-right {
+  justify-content: flex-end;
+  gap: 14px;
+}
+.dsh-ctl-album {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+.dsh-ctl-cover {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dsh-ctl-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.dsh-ctl-title {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dsh-ctl-btn {
+  margin-left: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.85);
+  background: none;
+  border: none;
+  position: relative;
+  transition: transform 0.15s, color 0.15s, background 0.15s;
+  font-family: inherit;
+  line-height: 1;
+  padding: 0;
+}
+.dsh-ctl-btn.first {
+  margin-left: 0;
+}
+.dsh-ctl-btn:hover {
+  color: #ffffff;
+}
+.dsh-ctl-btn:active {
+  transform: scale(0.92);
+}
+.dsh-ctl-btn.md {
+  width: 32px;
+  height: 32px;
+}
+.dsh-ctl-btn.lg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: rgba(0, 0, 0, 0.85);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.dsh-ctl-btn.lg:hover {
+  transform: scale(1.06);
+  color: #000000;
+}
+#dsh-stage.legacy .dsh-ctl-btn.active {
+  color: #ffc862;
+}
+#dsh-stage.learning .dsh-ctl-btn.active {
+  color: #b57cff;
+}
+.dsh-ctl-btn.speed {
+  margin-left: 0;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+}
+.dsh-ctl-btn.icon-right {
+  margin-left: 0;
+  width: 28px;
+  height: 28px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.dsh-ctl-btn.icon-right:hover {
+  color: #ffffff;
+}
+.dsh-ctl-idx {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.dsh-speed-panel {
+  position: fixed;
+  right: 24px;
+  bottom: 92px;
+  width: 250px;
+  padding: 16px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  z-index: 2147483645;
+  display: none;
+}
+.dsh-speed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dsh-speed-title {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+}
+.dsh-speed-value {
+  font-size: 16px;
+  font-weight: 700;
+}
+.dsh-speed-range {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+.dsh-speed-icon-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+.dsh-speed-slider {
+  flex: 1;
+  accent-color: #a47fff;
+}
+.dsh-speed-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.dsh-speed-preset {
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e6e6e6;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.dsh-speed-preset:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.dsh-speed-preset.active {
+  background: rgba(164, 127, 255, 0.2);
+  border-color: rgba(164, 127, 255, 0.65);
+  color: #c4a8ff;
+}
+
+/* ============ 5. 播放器入口按钮与玻璃拟态菜单 ============ */
+#dsh-translate-btn {
+  width: 36px;
+  height: 100%;
+  display: inline-block;
+  float: right;
+  pointer-events: auto;
+  position: relative;
+  z-index: 30;
+  user-select: none;
+}
+#dsh-translate-btn .dsh-translate-btn-inner {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#dsh-translate-btn .dsh-translate-logo {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  object-fit: contain;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 1px inset, rgba(0, 0, 0, 0.1) 0 2px 3px;
+  transition: transform 0.2s ease-in-out, filter 0.2s ease;
+}
+#dsh-translate-btn .dsh-translate-logo:hover {
+  filter: brightness(1.08);
+}
+#dsh-translate-btn .dsh-translate-logo:active {
+  transform: scale(0.9);
+}
+.dsh-mode-menu {
+  position: fixed;
+  width: 256px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background: rgba(28, 28, 28, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55);
+  padding: 6px;
+  z-index: 2147483647;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  user-select: none;
+}
+.dsh-mode-menu * {
+  box-sizing: border-box;
+}
+.dsh-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.dsh-menu-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.dsh-menu-item-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.75);
+  flex-shrink: 0;
+}
+.dsh-menu-item-text {
+  flex: 1;
+  min-width: 0;
+}
+.dsh-menu-item-title {
+  font-weight: 500;
+  line-height: 1.3;
+}
+.dsh-menu-item-desc {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 2px;
+}
+.dsh-menu-item.on .dsh-menu-item-title,
+.dsh-menu-item.on .dsh-menu-item-icon {
+  color: #ffc862;
+}
+.dsh-menu-item.on[data-mode="learning"] .dsh-menu-item-title,
+.dsh-menu-item.on[data-mode="learning"] .dsh-menu-item-icon {
+  color: #b57cff;
+}
+.dsh-menu-sep {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 5px 6px;
+}
