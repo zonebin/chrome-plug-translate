@@ -6,6 +6,7 @@
   const els = {
     enabled: $('enabled'),
     mode: $('mode'),
+    xArticleAuto: $('xArticleAuto'),
     provider: $('provider'),
     apiKey: $('apiKey'),
     baseUrl: $('baseUrl'),
@@ -32,6 +33,7 @@
 
   els.enabled.checked = settings.enabled;
   els.mode.value = settings.mode || 'legacy';
+  els.xArticleAuto.checked = settings.xArticleAutoTranslate !== false;
   els.provider.value = settings.provider;
   els.apiKey.value = settings.apiKey || '';
   els.baseUrl.value = settings.baseUrl || '';
@@ -67,6 +69,7 @@
     const patch = {
       enabled: els.enabled.checked,
       mode: els.mode.value,
+      xArticleAutoTranslate: els.xArticleAuto.checked,
       provider: els.provider.value,
       apiKey: els.apiKey.value.trim(),
       baseUrl: els.baseUrl.value.trim(),

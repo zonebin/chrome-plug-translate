@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "youtube translate",
-  "version": "1.0.0",
-  "description": "YouTube 双语字幕翻译：原文字幕在上、译文在下，支持免费翻译及 DeepSeek / OpenAI / 任意 OpenAI 兼容引擎。",
+  "version": "1.1.0",
+  "description": "YouTube 双语字幕翻译 + X 长文逐段英译中，支持免费翻译及 DeepSeek / OpenAI / 任意 OpenAI 兼容引擎。",
   "permissions": ["storage", "tabs"],
   "host_permissions": ["https://*/*", "http://*/*"],
   "background": {
@@ -30,6 +30,16 @@
       "run_at": "document_start",
       "all_frames": false,
       "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://x.com/*",
+        "https://twitter.com/*"
+      ],
+      "js": ["x-article-translate.js"],
+      "css": ["x-article.css"],
+      "run_at": "document_idle",
+      "all_frames": false
     }
   ],
   "action": {
